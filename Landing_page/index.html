@@ -1,0 +1,913 @@
+!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estúdio IA - Fotos Profissionais & Criativas</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://borgesplanejamento-eng.github.io/thiagovic/">
+    <meta property="og:title" content="Estúdio IA - Fotos Profissionais & Criativas">
+    <meta property="og:description" content="Transforme suas fotos com Inteligência Artificial. Ensaios profissionais, aniversários e restaurações impecáveis.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/borgesplanejamento-eng/thiagovic/main/assets/images/thiago16_9.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Estúdio IA - Fotos Profissionais">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/borgesplanejamento-eng/thiagovic/main/assets/images/thiago16_9.webp">
+
+    <meta name="description" content="Transforme suas fotos com Inteligência Artificial. Ensaios profissionais, aniversários e viagens sem sair de casa.">
+
+    <style>
+
+
+
+/* --- ESTILIZAÇÃO DA SEÇÃO COMO FUNCIONA --- */
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.step-card {
+    background: #141414;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid #222;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--cor-destaque);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+}
+
+.step-icon-circle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--cor-destaque), #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.step-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.step-card p {
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Linha conectora opcional para Desktop */
+@media (min-width: 900px) {
+    .steps-container {
+        position: relative;
+    }
+}
+
+        /* --- RESET E VARIÁVEIS GLOBAIS --- */
+     :root {
+            --cor-fundo: #0a0a0a;        
+            --cor-fundo-card: #141414;  
+            --cor-texto-princ: #ffffff; 
+            --cor-texto-sec: #a0a0a0;   
+            --cor-destaque: #00d4ff;    
+            --cor-destaque-hover: #00a8cc; 
+            --cor-whatsapp: #25D366;    
+            --espacamento-padrao: 20px;
+            --borda-raio: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto-princ);
+            line-height: 1.6;
+            overflow-x: hidden; 
+        }
+
+        /* --- BOTÕES CTA --- */
+      .btn-cta {
+    display: inline-flex;       /* Usa flexbox para alinhar conteúdo */
+    justify-content: center;    /* Centraliza horizontalmente */
+    align-items: center;        /* Centraliza verticalmente */
+    text-align: center;         /* Garante centralização do texto */
+    
+    background-color: #8b5cf6;  /* Cor roxa da sua referência */
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    
+    /* AJUSTES DE TAMANHO */
+    padding: 12px 24px;         /* Diminuído (antes era 16px 32px) */
+    max-width: 220px;           /* Largura máxima menor */
+    width: auto;                /* Deixa o botão ajustar ao texto ou ao max-width */
+    font-size: 0.95rem;         /* Fonte levemente menor para equilibrar */
+    
+    border-radius: 50px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+}
+
+        .btn-cta:hover {
+            background-color: var(--cor-destaque-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+      /* --- NAVEGAÇÃO (CABEÇALHO) --- */
+   /* --- NAVEGAÇÃO FLUTUANTE --- */
+        .top-nav {
+            position: fixed; /* Torna o menu fixo no topo */
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%; /* Reduzi um pouco o padding para ser mais discreto ao rolar */
+            z-index: 9999; /* Garante que fica acima de tudo */
+            
+            /* Efeito de Vidro (Glassmorphism) */
+            background: rgba(10, 10, 10, 0.7); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            
+            transition: all 0.3s ease;
+        }
+
+        /* Ajuste para o conteúdo não ficar escondido atrás do menu fixo */
+        html {
+            scroll-behavior: smooth; /* Suaviza o clique nos links do menu */
+        }
+
+        .top-nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Brush Script MT', cursive, sans-serif; /* Simula a fonte da referência */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cor-destaque);
+        }
+
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; /* Ocupa 100% da altura da tela */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Alinha tudo à esquerda */
+            text-align: left;
+            padding: 0 5%;
+            position: relative;
+            
+            /* IMAGEM DE FUNDO AQUI */
+            /* O linear-gradient escurece a imagem para o texto branco aparecer melhor */
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 100%), url('assets/images/thiago16_9.webp'); 
+            background-size: cover;
+            background-position: center top;
+        }
+
+        .hero-content {
+            max-width: 650px; /* Limita a largura do texto para não passar para o lado direito */
+            z-index: 2;
+            margin-top: 50px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+        }
+
+        /* Ajuste do botão CTA do Hero para alinhar à esquerda e seguir a cor da referência */
+        .hero .btn-cta {
+            background-color: #8b5cf6; /* Roxo parecido com a referência */
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            max-width: 250px;
+        }
+        
+        .hero .btn-cta:hover {
+            background-color: #7c3aed;
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+        }
+
+        /* Oculta o menu em telas pequenas para não quebrar o layout (Mobile) */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none; /* Em um cenário real, aqui entraria um menu hambúrguer */
+            }
+            .hero h1 { font-size: 2.2rem; }
+            .hero { align-items: center; text-align: center; background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/images/thiago16_9.webp'); }
+        }
+
+        /* --- PROVA SOCIAL --- */
+        .autoridade {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--cor-fundo-card);
+            border-bottom: 1px solid #333;
+        }
+        
+        .autoridade h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--cor-destaque);
+        }
+
+        /* --- SEÇÃO DE SERVIÇOS --- */
+        .section-servico {
+            padding: 60px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .container-texto {
+            padding: 0 20px;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .servico-titulo {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .servico-desc {
+            color: var(--cor-texto-sec);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- CARROSSEL --- */
+        .carousel-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 15px;
+            width: max-content; 
+        }
+
+        .carousel-item {
+            width: 250px;
+            height: 250px;
+            flex-shrink: 0;
+            border-radius: var(--borda-raio);
+            overflow: hidden;
+            position: relative;
+            background-color: #222;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Fallback para imagem não carregada */
+        .carousel-item img::before {
+            content: "Imagem do Ensaio";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            color: #666;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* --- NOVA SEÇÃO: SOBRE (ABOUT) --- */
+        .section-sobre {
+            padding: 80px 20px;
+            background-color: #0e0e0e; /* Levemente diferente do fundo principal */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            border-bottom: 1px solid #222;
+        }
+
+        .sobre-foto {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--cor-destaque); /* Borda Neon */
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            background-color: #222;
+        }
+
+        .sobre-conteudo {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .sobre-titulo {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .sobre-texto {
+            color: var(--cor-texto-sec);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        /* --- COMO FUNCIONA --- */
+        .steps-section {
+            padding: 60px 20px;
+            background-color: #0f0f0f;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .step-number {
+            background-color: var(--cor-destaque);
+            color: #000;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* --- CTA FINAL --- */
+        .final-cta {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, var(--cor-fundo) 0%, #0d1f26 100%);
+        }
+
+/* Container do logotipo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Tamanho da imagem do logotipo */
+.logo-img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto;  /* Mantém a proporção da imagem */
+    display: block;
+    object-fit: contain;
+}
+
+/* Estilo para o botão "Adquirir meu ensaio" no menu (opcional, para destaque) */
+.btn-nav-destaque {
+    background: var(--cor-destaque);
+    color: #000 !important;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-nav-destaque:hover {
+    background: var(--cor-destaque-hover);
+    transform: scale(1.05);
+}
+
+/* Ajuste de espaçamento para o menu flutuante */
+.top-nav {
+    padding: 10px 5%; /* Padding reduzido para o menu não ficar muito alto */
+}
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #222;
+        }
+
+        .social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem; /* Tamanho do ícone */
+    width: 45px;      /* Largura do círculo */
+    height: 45px;     /* Altura do círculo */
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.social-btn:hover {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+    transform: translateY(-3px);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+/* Cores específicas no hover (Opcional, mas fica bem profissional) */
+.social-btn:hover .fa-instagram { color: #E1306C; }
+.social-btn:hover .fa-facebook-f { color: #4267B2; }
+.social-btn:hover .fa-whatsapp { color: #25D366; }
+
+        /* CORREÇÃO DO BOTÃO FLUTUANTE DO WHATSAPP */
+        .floating-wpp {
+            position: fixed; /* Fixa na tela */
+            bottom: 25px;    /* Distância do fundo */
+            right: 25px;     /* Distância da direita */
+            width: 60px;     /* Tamanho fixo */
+            height: 60px;
+            background-color: #25D366; /* Verde Oficial */
+            color: #ffffff;  /* Ícone Branco */
+            border-radius: 50%; /* Deixa redondo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4); /* Sombra para destacar */
+            z-index: 2147483647; /* VALOR MÁXIMO (ficará acima de tudo) */
+            transition: transform 0.3s ease; /* Animação leve só no hover */
+            
+            /* Ajuste para não colar na borda de iPhones novos */
+            margin-bottom: env(safe-area-inset-bottom);
+        }
+
+        .floating-wpp:hover {
+            transform: scale(1.1); /* Aumenta um pouquinho ao passar o mouse */
+        }
+
+        /* Ajuste do ícone SVG para ficar centralizado */
+        .floating-wpp svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor; /* Pega a cor branca definida acima */
+        }
+
+        /* Media Queries para Desktop */
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .carousel-item { width: 300px; height: 300px; }
+            .container-texto { text-align: center; }
+            
+            /* Ajuste da seção Sobre para ficar lado a lado no PC */
+            .section-sobre {
+                flex-direction: row;
+                justify-content: center;
+                text-align: left;
+            }
+            .sobre-conteudo {
+                text-align: left;
+                margin-left: 20px;
+            }
+        }
+        
+        /* Ajuste para Safe Area do iPhone (área inferior) */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            .floating-wpp {
+                bottom: calc(20px + env(safe-area-inset-bottom));
+            }
+        }
+/* Agrupa o logo e as redes sociais no lado esquerdo */
+.logo-social-group {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaço entre o logo e os ícones */
+}
+
+/* Estilização dos ícones de rede social no topo */
+.nav-social {
+    display: flex;
+    gap: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2); /* Linha divisória sutil */
+    padding-left: 20px;
+}
+
+.nav-social a {
+    color: var(--cor-texto-sec);
+    font-size: 1.1rem;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.nav-social a:hover {
+    color: var(--cor-destaque);
+    transform: scale(1.1);
+}
+
+/* Garante que o menu flutuante distribua bem os dois lados */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+/* Ajuste para celular: esconde as redes sociais no topo para não amontoar */
+@media (max-width: 768px) {
+    .nav-social {
+        display: none;
+    }
+}
+    </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+ 
+<nav class="top-nav">
+    <div class="logo-social-group">
+              
+        <div class="nav-social">
+            <a href="https://www.instagram.com/vicfotoia/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61582035857808" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#criador">Criador</a></li>
+        <li><a href="#como-funciona">Como funciona?</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="https://wa.me/5548988219699?text=Ol%C3%A1%2C%20quero%20adquirir%20meu%20ensaio!" target="_blank" class="btn-nav-destaque">Comprar ensaio</a></li>
+    </ul>
+</nav>
+
+
+    <header class="hero">
+        <div class="hero-content">
+
+            <h1 class="section-title" style="color: #00E5FF; text-shadow: 0 0 15px rgba(224, 176, 255, 0.4);">Ensaios Fotográficos com IA</h1>
+
+<h4 class="section-title" style="color: #00E5FF; text-shadow: 0 0 15px rgba(224, 176, 255, 0.4);">Thiago Vic | Especialista em IA</h4>
+            <p>Ensaios fotográficos de alto padrão e restaurações impecáveis criadas por Inteligência Artificial. Estética editorial e texturas reais sem sair de casa.</p>
+           <a href="https://wa.me/5548988219699?text=Ol%C3%A1%2C%20quero%20transformar%20minhas%20fotos%20com%20IA" class="btn-cta">
+    Chamar no WhatsApp
+</a>
+        </div>
+    </header>
+
+    <section id="galeria" class="section-servico">
+        <div class="container-texto">
+            <h2 style="font-size: 2.5rem; margin-bottom: 15px; background: linear-gradient(90deg, #fff, var(--cor-destaque)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Nossas Especialidades
+        </h2>
+   
+    <section class="section-servico">
+        <div class="container-texto">
+            <h2 class="servico-titulo">Ensaio Corporativo & LinkedIn</h2>
+            <p class="servico-desc">Transmita autoridade e confiança. Ideal para perfis profissionais, currículos e palestrantes. Chega de selfies amadoras no seu perfil.</p>
+        </div>
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="assets/images/profissional1.webp" alt="Profissional 1" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Profissional 1'"></div>
+                <div class="carousel-item"><img src="assets/images/profissional2.webp" alt="Profissional 2" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Profissional 2'"></div>
+                <div class="carousel-item"><img src="assets/images/profissional3.webp" alt="Profissional 3" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Profissional 3'"></div>
+                <div class="carousel-item"><img src="assets/images/profissional4.webp" alt="Profissional 4" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Profissional 4'"></div>
+                <div class="carousel-item"><img src="assets/images/profissional5.webp" alt="Profissional 5" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Profissional 5'"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-servico">
+        <div class="container-texto">
+            <h2 class="servico-titulo">Ensaios de Aniversário</h2>
+            <p class="servico-desc">Celebre sua nova fase com cenários incríveis. Balões, luzes e magia, sem a bagunça de uma festa real.</p>
+        </div>
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="assets/images/aniversario1.webp" alt="Aniversário 1" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Aniversário 1'"></div>
+                <div class="carousel-item"><img src="assets/images/aniversario2.webp" alt="Aniversário 2" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Aniversário 2'"></div>
+                <div class="carousel-item"><img src="assets/images/aniversario3.webp" alt="Aniversário 3" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Aniversário 3'"></div>
+                <div class="carousel-item"><img src="assets/images/aniversario4.webp" alt="Aniversário 4" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Aniversário 4'"></div>
+                <div class="carousel-item"><img src="assets/images/aniversario5.webp" alt="Aniversário 5" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Aniversário 5'"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-servico">
+        <div class="container-texto">
+            <h2 class="servico-titulo">Ensaios de Gestantes</h2>
+            <p class="servico-desc">Registre a fase mais incrivel de sua vida.</p>
+        </div>
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="assets/images/gestante1.webp" alt="Viagem 1" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Viagem 1'"></div>
+                <div class="carousel-item"><img src="assets/images/gestante2.webp" alt="Viagem 2" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Viagem 2'"></div>
+                <div class="carousel-item"><img src="assets/images/gestante3.webp" alt="Viagem 3" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Viagem 3'"></div>
+                <div class="carousel-item"><img src="assets/images/gestante4.webp" alt="Viagem 4" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Viagem 4'"></div>
+                <div class="carousel-item"><img src="assets/images/gestante5.webp" alt="Viagem 5" onerror="this.style.display='none'; this.parentNode.innerText='Imagem Viagem 5'"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-servico">
+        <div class="container-texto">
+            <h2 class="servico-titulo">Restauração de Fotos</h2>
+            <p class="servico-desc">Traga memórias de volta à vida. Colorimos e removemos riscos de fotos antigas de família.</p>
+        </div>
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="assets/images/restauração1.webp" alt="Restauração 1" onerror="this.style.display='none'; this.parentNode.innerText='Antes/Depois 1'"></div>
+                <div class="carousel-item"><img src="assets/images/restauração2.webp" alt="Restauração 2" onerror="this.style.display='none'; this.parentNode.innerText='Antes/Depois 2'"></div>
+                <div class="carousel-item"><img src="assets/images/restauração3.webp" alt="Restauração 3" onerror="this.style.display='none'; this.parentNode.innerText='Antes/Depois 3'"></div>
+                <div class="carousel-item"><img src="assets/images/restauração4.webp" alt="Restauração 4" onerror="this.style.display='none'; this.parentNode.innerText='Antes/Depois 4'"></div>
+                <div class="carousel-item"><img src="assets/images/restauração5.webp" alt="Restauração 5" onerror="this.style.display='none'; this.parentNode.innerText='Antes/Depois 5'"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="criador" class="section-sobre">
+        <img src="assets/images/thiago1.webp" alt="Foto do Criador" class="sobre-foto" onerror="this.style.backgroundColor='#333';">
+        
+        <div class="sobre-conteudo">
+            <h2 class="sobre-titulo">Quem está por trás da tecnologia?</h2>
+
+<h4 class="section-title" style="color: #00E5FF; text-shadow: 0 0 15px rgba(224, 176, 255, 0.4);">Thiago Vic | Especialista em IA</h4>
+
+            <p class="sobre-texto">
+                Olá sou especialista em inteligência artificial aplicada à criação de imagens, com mais de 5 anos de experiência no desenvolvimento de modelos de ponta. Ao longo da minha jornada, já atendi mais de 300 clientes, entregando imagens ultra-realistas e restaurações precisas. Minha paixão é transformar ideias em visuais impactantes, com tecnologia de ponta e atenção impecável aos detalhes. Se você busca inovação, precisão e um olhar criativo, eu estou pronto para transformar sua visão em realidade.
+            </p>
+            <p class="sobre-texto">
+                Diferente de aplicativos automáticos genéricos, eu curo e edito cada imagem para garantir que seus traços reais sejam preservados, entregando um resultado 100% profissional e natural.
+            </p>
+
+	<div class="social-proof-small">
+    ⭐⭐⭐⭐⭐ +300 clientes já transformaram suas fotos com Thiago Vic
+	</div>
+
+        </div>
+    </section>
+
+<section id="como-funciona" class="steps-section" style="padding: 100px 20px; background: #0a0a0a;">
+    <h2 style="text-align: center; margin-bottom: 60px; font-size: 2.5rem; color: #fff;">
+        Sua nova imagem em <span style="color: var(--cor-destaque);">3 passos</span>
+    </h2>
+    
+    <div class="steps-container">
+        <div class="step-card">
+            <div class="step-icon-circle">1</div>
+            <h4>Envie sua ideia</h4>
+            <p>Chame no WhatsApp e conte qual estilo de ensaio você deseja. Estamos prontos para sugerir o melhor conceito para você.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-icon-circle">2</div>
+            <h4>Mande suas fotos</h4>
+            <p>Envie algumas selfies e fotos de referência. Nossa IA precisa conhecer seus traços para manter 100% da sua identidade.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-icon-circle">3</div>
+            <h4>Receba suas fotos</h4>
+            <p>Você recebe suas fotos em alta resolução, com tratamento profissional, prontas para as redes sociais.</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="depoimentos" class="testimonials-section" style="padding: 100px 20px; background-color: #0a0a0a;">
+    <div style="text-align: center; margin-bottom: 60px;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 15px; background: linear-gradient(90deg, #fff, var(--cor-destaque)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Histórias de quem já transformou sua imagem
+        </h2>
+        <p style="color: var(--cor-texto-sec); font-size: 1.1rem;">⭐⭐⭐⭐⭐ +300 clientes satisfeitos com a precisão da nossa IA.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;">
+        
+        <div style="background: #141414; padding: 30px; border-radius: 20px; border: 1px solid #222; transition: transform 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="color: #FFD700; margin-bottom: 15px;">★★★★★</div>
+                <p style="color: #ccc; font-style: italic; margin-bottom: 25px; line-height: 1.6;">"Fiquei impressionada com o realismo. Usei as fotos para meu LinkedIn e já recebi vários elogios. Ninguém diz que foi feito por IA!"</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/images/mariana.webp" alt="Mariana Silva" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cor-destaque);">
+                <span style="font-weight: bold; color: #fff;">Mariana Silva</span>
+            </div>
+        </div>
+
+        <div style="background: #141414; padding: 30px; border-radius: 20px; border: 1px solid #222; transition: transform 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="color: #FFD700; margin-bottom: 15px;">★★★★★</div>
+                <p style="color: #ccc; font-style: italic; margin-bottom: 25px; line-height: 1.6;">"Restaurei fotos antigas do meu avô e o resultado foi emocionante. O Thiago tem um cuidado absurdo com os detalhes faciais."</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/images/ricardo.webp" alt="Ricardo Oliveira" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cor-destaque);">
+                <span style="font-weight: bold; color: #fff;">Ricardo Oliveira</span>
+            </div>
+        </div>
+
+        <div style="background: #141414; padding: 30px; border-radius: 20px; border: 1px solid #222; transition: transform 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="color: #FFD700; margin-bottom: 15px;">★★★★★</div>
+                <p style="color: #ccc; font-style: italic; margin-bottom: 25px; line-height: 1.6;">"Precisava de um ensaio de gestante mas não queria sair de casa. O resultado ficou cinematográfico. Vale cada centavo!"</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/images/ana.webp" alt="Ana Paula Santos" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cor-destaque);">
+                <span style="font-weight: bold; color: #fff;">Ana Paula Santos</span>
+            </div>
+        </div>
+
+        <div style="background: #141414; padding: 30px; border-radius: 20px; border: 1px solid #222; transition: transform 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="color: #FFD700; margin-bottom: 15px;">★★★★★</div>
+                <p style="color: #ccc; font-style: italic; margin-bottom: 25px; line-height: 1.6;">"Sou palestrante e precisava de fotos que passassem autoridade. O resultado superou qualquer estúdio físico que já fui."</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/images/marcos.webp" alt="Marcos Castro" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cor-destaque);">
+                <span style="font-weight: bold; color: #fff;">Marcos Castro</span>
+            </div>
+        </div>
+
+        <div style="background: #141414; padding: 30px; border-radius: 20px; border: 1px solid #222; transition: transform 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="color: #FFD700; margin-bottom: 15px;">★★★★★</div>
+                <p style="color: #ccc; font-style: italic; margin-bottom: 25px; line-height: 1.6;">"A velocidade de entrega me surpreendeu. Em menos de 24h eu já estava com meu ensaio de aniversário pronto para o Instagram."</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/images/juliana.webp" alt="Juliana Lopes" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cor-destaque);">
+                <span style="font-weight: bold; color: #fff;">Juliana Lopes</span>
+            </div>
+        </div>
+
+        <div style="background: #141414; padding: 30px; border-radius: 20px; border: 1px solid #222; transition: transform 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="color: #FFD700; margin-bottom: 15px;">★★★★★</div>
+                <p style="color: #ccc; font-style: italic; margin-bottom: 25px; line-height: 1.6;">"O suporte do Thiago é nota 10. Ele ajustou cada detalhe que pedi até ficar perfeito. Indico para todo mundo!"</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="assets/images/felipe.webp" alt="Felipe Diniz" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cor-destaque);">
+                <span style="font-weight: bold; color: #fff;">Felipe Diniz</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+    <section class="final-cta">
+        <h2 style="margin-bottom: 20px;">Pronto para se destacar?</h2>
+        <p style="margin-bottom: 30px; color: #aaa;">Agenda aberta para esta semana. Garanta seu ensaio.</p>
+        <a href="https://wa.me/5548988219699?text=Vim%20pelo%20site%20e%20quero%20fazer%20meu%20ensaio" class="btn-cta">
+            Agende seu Ensaio Aqui
+        </a>
+    </section>
+
+   <footer>
+    <p>&copy; 2024 Studio DreamLike | By Thiago Vic. Todos os direitos reservados.</p>
+    <div class="social-links">
+        <a href="https://www.instagram.com/vicfotoia/" class="social-btn" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61582035857808" class="social-btn" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/5548988219699?text=Ol%C3%A1%2C%20vim%20pelo%20site!" class="social-btn" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+</footer>
+
+    <a href="https://wa.me/5548988219699?text=Ol%C3%A1%2C%20vim%20pelo%20site!" class="floating-wpp" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const carousels = document.querySelectorAll('.carousel-wrapper');
+            const speed = 1; 
+
+            carousels.forEach(wrapper => {
+                const track = wrapper.querySelector('.carousel-track');
+                const items = Array.from(track.children);
+                
+                // Duplica itens para efeito infinito
+                items.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    track.appendChild(clone);
+                });
+                items.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    track.appendChild(clone);
+                });
+
+                let position = 0;
+                
+                function animate() {
+                    position -= speed;
+                    const firstItem = items[0];
+                    const itemWidth = firstItem.offsetWidth + 15; // Width + Gap
+                    const totalOriginalWidth = itemWidth * items.length;
+
+                    track.style.transform = `translateX(${position}px)`;
+
+                    if (Math.abs(position) >= totalOriginalWidth) {
+                        position = 0;
+                    }
+
+                    requestAnimationFrame(animate);
+                }
+
+                requestAnimationFrame(animate);
+            });
+        });
+    </script>
+</body>
+</html>
